@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+pydantic
+pydantic-settings
+authlib
+itsdangerous
+python-dotenv
+httpx
+twilio
+apscheduler
+email-validator

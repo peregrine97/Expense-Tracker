@@ -1,0 +1,385 @@
+.mobile-app-section {
+  background-color: #0d2818;
+  padding: 120px 20px;
+  overflow: hidden;
+  color: white;
+  position: relative;
+}
+
+/* Subtle background glowing spots */
+.mobile-app-section::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(18,196,139,0.15) 0%, rgba(18,196,139,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.mobile-app-section::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(64,195,249,0.1) 0%, rgba(64,195,249,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.mobile-app-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Left Side: Text */
+.mobile-text-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.mobile-text-content h2 {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+
+.mobile-subtitle {
+  font-size: 18px;
+  color: #a0aec0;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.feature-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-pill {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px 24px;
+  border-radius: 100px;
+  width: fit-content;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.feature-pill:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.pill-icon {
+  color: #12C48B;
+}
+
+.feature-pill span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+/* Right Side: Visuals */
+.mobile-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  perspective: 1000px; /* For 3D transform */
+}
+
+/* 3D Phone Mockup */
+.phone-mockup {
+  width: 300px;
+  height: 620px;
+  background: #000000; /* Phone screen edge */
+  border-radius: 40px;
+  border: 6px solid #e5e7eb; /* Silver bezel */
+  /* Combine multiple solid shadows to create an extruded 3D silver/metallic back side */
+  box-shadow: 
+    -1px 1px 0 #d1d5db, 
+    -2px 2px 0 #d1d5db, 
+    -3px 3px 0 #9ca3af, 
+    -4px 4px 0 #9ca3af, 
+    -5px 5px 0 #6b7280, 
+    -6px 6px 0 #6b7280, 
+    -7px 7px 0 #4b5563, 
+    -8px 8px 0 #4b5563, 
+    -9px 9px 0 #374151,
+    -10px 10px 0 #1f2937,
+    -15px 25px 40px rgba(0,0,0,0.7);
+  position: relative;
+  overflow: hidden;
+  transform: rotate(5deg) rotateY(-22deg);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+.phone-mockup:hover {
+  transform: rotate(5deg) rotateY(-15deg) scale(1.02);
+}
+
+/* Notch */
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 25px;
+  background: #000000;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  z-index: 10;
+}
+
+/* Inside Phone Screen */
+.phone-screen {
+  padding: 40px 20px 20px 20px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: white;
+}
+
+.phone-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.phone-logo {
+  background: #12C48B;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-greeting h3 {
+  font-size: 20px;
+  margin: 0 0 4px 0;
+}
+.phone-greeting p {
+  font-size: 12px;
+  color: #8fa398;
+  margin: 0;
+}
+
+.phone-balance-card {
+  background: rgba(18, 196, 139, 0.15);
+  border: 1px solid rgba(18, 196, 139, 0.3);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.phone-balance-card p {
+  font-size: 10px;
+  color: #8fa398;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.phone-balance-card h2 {
+  font-size: 32px;
+  margin: 0 0 8px 0;
+}
+
+.positive { color: #12C48B; font-size: 12px; font-weight: 600; }
+.negative { color: #FE5A61; font-size: 12px; font-weight: 600; }
+
+.phone-chart-area {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.chart-ring {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 8px solid #2a3b32;
+  border-top-color: #12C48B;
+  border-right-color: #FFC053;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ring-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+}
+
+.chart-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: #8fa398;
+}
+
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+.dot.food { background: #FFC053; }
+.dot.bills { background: #FE5A61; }
+.dot.shopping { background: #12C48B; }
+
+.phone-transactions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.ptrans-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.03);
+  padding: 12px;
+  border-radius: 12px;
+  transition: background 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+.ptrans-item:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateX(5px);
+}
+
+.ptrans-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; justify-content: center; align-items: center; color: white;
+}
+.ptrans-icon.yellow { background: rgba(255, 192, 83, 0.2); color: #FFC053; }
+.ptrans-icon.green { background: rgba(18, 196, 139, 0.2); color: #12C48B; }
+
+.ptrans-details {
+  flex-grow: 1;
+}
+
+.ptrans-details strong { display: block; font-size: 12px; margin-bottom: 2px; }
+.ptrans-details span { font-size: 10px; color: #8fa398; }
+
+.phone-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  color: #607569;
+}
+.phone-nav > * {
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.phone-nav > *:hover {
+  color: white;
+  transform: scale(1.1);
+}
+.phone-nav .active { color: #12C48B; }
+.nav-fab {
+  background: #12C48B;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex; justify-content: center; align-items: center;
+  margin-top: -20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.nav-fab:hover {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 5px 15px rgba(18, 196, 139, 0.4);
+}
+
+/* Floating Glassmorphism Card (Overlapping the phone) */
+.floating-glass-card {
+  position: absolute;
+  top: 100px;
+  right: -60px;
+  width: 240px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  z-index: 20;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+.floating-glass-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+}
+
+.glass-header {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glass-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.glass-item:last-child { margin-bottom: 0; }
+
+.glass-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; justify-content: center; align-items: center; color: white;
+}
+.glass-icon.green { background: #12C48B; }
+.glass-icon.gold { background: #FFC053; }
+
+.glass-text strong { display: block; font-size: 13px; color: white; }
+.glass-text span { font-size: 11px; color: #a0aec0; }
+
+@media (max-width: 900px) {
+  .mobile-app-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .mobile-text-content { max-width: 100%; }
+  .feature-pills { align-items: center; }
+  .floating-glass-card { right: -10px; top: -30px; }
+}

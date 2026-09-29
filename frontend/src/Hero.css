@@ -1,0 +1,173 @@
+.hero-section {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 140px;
+  overflow: hidden;
+  background-color: #fbfcfd;
+}
+
+/* Background glowing gradient */
+.hero-glow-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(27,200,140,0.15) 0%, rgba(27,200,140,0) 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 2;
+  margin-bottom: 80px;
+}
+
+.hero-content h1 {
+  font-size: 56px;
+  font-weight: 700;
+  color: #344554;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.highlight-box {
+  display: inline-block;
+  background-color: #12C48B;
+  color: white;
+  padding: 4px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(18, 196, 139, 0.4);
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: #718096;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Visual Area for floating elements */
+.hero-visual-area {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 400px;
+  z-index: 1;
+}
+
+.center-glowing-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #12C48B, #40C3F9);
+  border-radius: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 20px 50px rgba(18, 196, 139, 0.5), inset 0 0 0 4px rgba(255,255,255,0.2);
+  z-index: 10;
+}
+
+.hero-float-card {
+  position: absolute;
+  z-index: 5;
+}
+
+.inner-float {
+  background: white;
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+  min-width: 160px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.hero-float-card:hover .inner-float {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+.card-header {
+  font-size: 12px;
+  font-weight: 700;
+  color: #718096;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.card-val {
+  font-size: 20px;
+  font-weight: 800;
+  color: #344554;
+}
+
+.card-sub {
+  font-size: 13px;
+  color: #A0AEC0;
+  margin-top: 4px;
+}
+
+/* Positioning the floating cards */
+.card-tl {
+  top: 10%;
+  left: 15%;
+}
+
+.card-bl {
+  bottom: 20%;
+  left: 10%;
+}
+
+.card-tr {
+  top: 5%;
+  right: 15%;
+}
+
+.card-br {
+  bottom: 30%;
+  right: 20%;
+}
+
+.card-fr {
+  top: 40%;
+  right: 5%;
+}
+
+/* Mini Bar Chart */
+.mini-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 40px;
+}
+
+.bar {
+  width: 12px;
+  background-color: #40C3F9;
+  border-radius: 3px 3px 0 0;
+}
+
+.bar.b1 { height: 60%; }
+.bar.b2 { height: 40%; }
+.bar.b3 { height: 80%; background-color: #FE5A61; }
+.bar.b4 { height: 100%; background-color: #12C48B; }
+
+@media (max-width: 900px) {
+  .hero-content h1 {
+    font-size: 40px;
+  }
+  .card-tl, .card-bl, .card-tr, .card-br, .card-fr {
+    display: none; /* Hide floating elements on very small screens to avoid clutter */
+  }
+}
