@@ -26,7 +26,18 @@ async def lifespan(app: FastAPI):
     print("Shutting down Background Robot...")
     scheduler.shutdown()
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI(title="Expense Tracker API", version="1.0.0", lifespan=lifespan)
+
+# Add CORS Middleware to allow requests from the Vercel frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins (you can restrict this to your Vercel URL later for security)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Add the Session Cookie tracker using our secret key
 app.add_middleware(SessionMiddleware, secret_key=settings.SECRET_KEY)

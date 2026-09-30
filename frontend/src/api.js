@@ -1,5 +1,7 @@
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+
 export const loginUser = async (googleToken) => {
-  const response = await fetch(`/api/auth/login?token=${googleToken}`, {
+  const response = await fetch(`${API_BASE_URL}/auth/login?token=${googleToken}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -10,7 +12,7 @@ export const loginUser = async (googleToken) => {
 };
 
 export const logoutUser = async () => {
-  const response = await fetch('/api/auth/logout', {
+  const response = await fetch(`${API_BASE_URL}/auth/logout`, {
     method: 'POST',
   });
   if (!response.ok) {
@@ -20,19 +22,19 @@ export const logoutUser = async () => {
 };
 
 export const getAnalyticsSummary = async (year, month) => {
-  const response = await fetch(`/api/analytics/summary/${year}/${month}`);
+  const response = await fetch(`${API_BASE_URL}/analytics/summary/${year}/${month}`);
   if (!response.ok) throw new Error('Failed to fetch analytics');
   return response.json();
 };
 
 export const getMonthlyTransactions = async (year, month) => {
-  const response = await fetch(`/api/expenses/${year}/${month}`);
+  const response = await fetch(`${API_BASE_URL}/expenses/${year}/${month}`);
   if (!response.ok) throw new Error('Failed to fetch transactions');
   return response.json();
 };
 
 export const addTransaction = async (transactionData) => {
-  const response = await fetch('/api/expenses/', {
+  const response = await fetch(`${API_BASE_URL}/expenses/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(transactionData),
@@ -42,7 +44,7 @@ export const addTransaction = async (transactionData) => {
 };
 
 export const getHistoricalSavings = async () => {
-  const response = await fetch('/api/analytics/historical/savings');
+  const response = await fetch(`${API_BASE_URL}/analytics/historical/savings`);
   if (!response.ok) throw new Error('Failed to fetch historical savings');
   return response.json();
 };
