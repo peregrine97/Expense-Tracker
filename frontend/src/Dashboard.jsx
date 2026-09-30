@@ -71,12 +71,12 @@ function Dashboard({ user, onLogout }) {
   const [activeTab, setActiveTab] = useState('Dashboard');
   const [historicalData, setHistoricalData] = useState([]);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   const fetchData = async () => {
     try {
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = today.getMonth() + 1; // 1-indexed
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth() + 1; // 1-indexed
 
       const [txs, summary, historical] = await Promise.all([
         getMonthlyTransactions(year, month),
@@ -98,7 +98,7 @@ function Dashboard({ user, onLogout }) {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [currentDate]);
 
   const handleAddTransaction = async (data) => {
     await addTransaction(data);
@@ -190,7 +190,24 @@ function Dashboard({ user, onLogout }) {
         >
           <div className="greeting">
             <h1>Good morning, {user?.name ? user.name.split(' ')[0] : 'Explorer'} 👋</h1>
-            <p className="text-muted">Here's what's happening with your money today.</p>
+            <p className="text-muted" style={{marginBottom: '10px'}}>Here's what's happening with your money.</p>
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+              <button 
+                onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1))} 
+                style={{ padding: '6px 12px', borderRadius: '8px', border: '1px solid #e0e0e0', background: 'white', cursor: 'pointer', fontSize: '14px', fontWeight: 500 }}
+              >
+                &larr; Prev
+              </button>
+              <span style={{ fontWeight: 'bold', minWidth: '120px', textAlign: 'center' }}>
+                {currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+              </span>
+              <button 
+                onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1))} 
+                style={{ padding: '6px 12px', borderRadius: '8px', border: '1px solid #e0e0e0', background: 'white', cursor: 'pointer', fontSize: '14px', fontWeight: 500 }}
+              >
+                Next &rarr;
+              </button>
+            </div>
           </div>
           <div className="header-actions" style={{ position: 'relative' }}>
             <div 
