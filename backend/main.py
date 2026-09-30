@@ -33,14 +33,24 @@ app = FastAPI(title="Expense Tracker API", version="1.0.0", lifespan=lifespan)
 # Add CORS Middleware to allow requests from the Vercel frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins (you can restrict this to your Vercel URL later for security)
+    allow_origins=[
+        "http://localhost:5173",
+        "https://expense-tracker-three-chi-20.vercel.app",
+        "https://expense-tracker-git-main-yashcomjfn.vercel.app"
+    ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Add the Session Cookie tracker using our secret key
-app.add_middleware(SessionMiddleware, secret_key=settings.SECRET_KEY)
+# Add the Session Cookie tracker using our secret key, configured for cross-origin (third-party) cookies
+app.add_middleware(
+    SessionMiddleware, 
+    secret_key=settings.SECRET_KEY, 
+    same_site="none", 
+    https_only=True
+)
 
 # Register our Waiters (Routers)
 app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
